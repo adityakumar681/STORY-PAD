@@ -1,0 +1,88 @@
+/* Essential animations and utilities for StoryPad */
+
+/* Subtle fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Respect user preferences for motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in {
+    animation: none;
+  }
+}
+
+/* Custom gradient backgrounds for premium feel */
+.gradient-hero {
+  background: linear-gradient(135deg, #f97316 0%, #dc2626 50%, #e11d48 100%);
+}
+
+.gradient-card {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(220, 38, 38, 0.1) 100%);
+}
+
+/* Animated gradient text for hero section */
+@keyframes gradient-x {
+  0%, 100% {
+    background-size: 200% 200%;
+    background-position: left center;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: right center;
+  }
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 4s ease infinite;
+}
+
+/* Floating animation for cards */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Mobile-specific responsive utilities */
+@media (max-width: 640px) {
+  .mobile-hidden {
+    display: none !important;
+  }
+  
+  .mobile-full-width {
+    width: 100% !important;
+  }
+  
+  .mobile-padding {
+    padding: 1rem !important;
+  }
+}
+
+/* Extra small mobile breakpoint */
+@media (max-width: 480px) {
+  .xs\:flex {
+    display: flex !important;
+  }
+  
+  .xs\:hidden {
+    display: none !important;
+  }
+}
