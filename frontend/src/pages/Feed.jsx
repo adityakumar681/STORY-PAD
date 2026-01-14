@@ -1168,28 +1168,39 @@ const fetchMustWatchStories = async () => {
 
                   {/* Author & Stats Row */}
                   <div className="flex items-center justify-between">
-                    <div 
-                      className="flex items-center space-x-2 group/author cursor-pointer flex-1 min-w-0"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        navigate(`/profile/${story.author._id}`);
-                      }}
-                    >
-                      <div className="w-6 h-6 bg-linear-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-sm shrink-0">
-                        {story.author.profilePicture ? (
-                          <img 
-                            src={story.author.profilePicture} 
-                            alt={story.author.username}
-                            className="w-full h-full object-cover rounded-full"
-                          />
-                        ) : (
-                          story.author.username?.[0]?.toUpperCase()
-                        )}
+                    {story.author ? (
+                      <div 
+                        className="flex items-center space-x-2 group/author cursor-pointer flex-1 min-w-0"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigate(`/profile/${story.author._id}`);
+                        }}
+                      >
+                        <div className="w-6 h-6 bg-linear-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-sm shrink-0">
+                          {story.author.profilePicture ? (
+                            <img 
+                              src={story.author.profilePicture} 
+                              alt={story.author.username}
+                              className="w-full h-full object-cover rounded-full"
+                            />
+                          ) : (
+                            story.author.username?.[0]?.toUpperCase() || 'U'
+                          )}
+                        </div>
+                        <p className="font-medium text-xs text-gray-700 truncate group-hover/author:text-orange-600 transition-colors">
+                          {story.author.username}
+                        </p>
                       </div>
-                      <p className="font-medium text-xs text-gray-700 truncate group-hover/author:text-orange-600 transition-colors">
-                        {story.author.username}
-                      </p>
-                    </div>
+                    ) : (
+                      <div className="flex items-center space-x-2 flex-1 min-w-0">
+                        <div className="w-6 h-6 bg-gray-300 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-sm shrink-0">
+                          U
+                        </div>
+                        <p className="font-medium text-xs text-gray-500 truncate">
+                          Unknown Author
+                        </p>
+                      </div>
+                    )}
 
                     {/* Like Button */}
                     <button

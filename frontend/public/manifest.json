@@ -1,0 +1,21 @@
+{
+  "name": "StoryPad - Where Stories Begin",
+  "short_name": "StoryPad",
+  "description": "Share your creative stories and connect with readers worldwide",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#f97316",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["books", "entertainment", "social"],
+  "lang": "en-US",
+  "dir": "ltr"
+}

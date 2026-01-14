@@ -632,17 +632,28 @@ const StoryDetail = () => {
                     {story.title}
                   </h1>
                   
-                  <Link
-                    to={`/profile/${story.author._id}`}
-                    className="inline-flex items-center gap-2 px-2 sm:px-3 py-1.5 bg-orange-100 hover:bg-orange-200 rounded-lg transition-all group mx-auto lg:mx-0"
-                  >
-                    <div className="w-6 h-6 sm:w-7 sm:h-7 bg-gradient-to-r from-orange-500 to-amber-500 rounded-md flex items-center justify-center text-white font-bold text-xs">
-                      {story.author.username.charAt(0).toUpperCase()}
+                  {story.author ? (
+                    <Link
+                      to={`/profile/${story.author._id}`}
+                      className="inline-flex items-center gap-2 px-2 sm:px-3 py-1.5 bg-orange-100 hover:bg-orange-200 rounded-lg transition-all group mx-auto lg:mx-0"
+                    >
+                      <div className="w-6 h-6 sm:w-7 sm:h-7 bg-gradient-to-r from-orange-500 to-amber-500 rounded-md flex items-center justify-center text-white font-bold text-xs">
+                        {story.author.username?.charAt(0)?.toUpperCase() || 'U'}
+                      </div>
+                      <span className="text-orange-700 font-medium group-hover:text-orange-800 text-xs sm:text-sm">
+                        {story.author.username}
+                      </span>
+                    </Link>
+                  ) : (
+                    <div className="inline-flex items-center gap-2 px-2 sm:px-3 py-1.5 bg-gray-100 rounded-lg mx-auto lg:mx-0">
+                      <div className="w-6 h-6 sm:w-7 sm:h-7 bg-gray-400 rounded-md flex items-center justify-center text-white font-bold text-xs">
+                        U
+                      </div>
+                      <span className="text-gray-600 text-xs sm:text-sm">
+                        Unknown Author
+                      </span>
                     </div>
-                    <span className="text-orange-700 font-medium group-hover:text-orange-800 text-xs sm:text-sm">
-                      {story.author.username}
-                    </span>
-                  </Link>
+                  )}
                 </div>
 
                 {/* Compact Story Description */}

@@ -629,7 +629,11 @@ const Profile = () => {
             <div className="overflow-y-auto max-h-80">
               {userModal.users && userModal.users.length > 0 ? (
                 <div className="divide-y divide-gray-100">
-                  {userModal.users.filter(Boolean).map((modalUser) => (
+                  {userModal.users.filter(Boolean).map((modalUser) => {
+                    // Additional safety check
+                    if (!modalUser || !modalUser._id) return null;
+                    
+                    return (
                     <Link
                       key={modalUser._id}
                       to={`/profile/${modalUser._id}`}
@@ -667,7 +671,8 @@ const Profile = () => {
                         <User className="h-4 w-4" />
                       </div>
                     </Link>
-                  ))}
+                    );
+                  })}
                 </div>
               ) : (
                 <div className="p-8 sm:p-12 text-center">
